@@ -4,7 +4,6 @@ Your minimal yet extensive authentication starter project in Gatsby.js with Fire
 
 * Powered by [Gatsby](https://github.com/gatsbyjs/gatsby)
 * [Live](https://react-firebase-authentication.wieruch.com/)
-* Found in [Taming the State in React](https://roadtoreact.com/course-details?courseId=TAMING_THE_STATE)
 
 ## Features
 
