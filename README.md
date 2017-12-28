@@ -1,5 +1,7 @@
 # 🐣 Gatsby Firebase Authentication
 
+[![Build Status](https://travis-ci.org/rwieruch/gatsby-firebase-authentication.svg?branch=master)](https://travis-ci.org/rwieruch/gatsby-firebase-authentication)
+
 Your minimal yet extensive authentication starter project in Gatsby.js with Firebase and plain React.
 
 * Powered by [Gatsby](https://github.com/gatsbyjs/gatsby)
