@@ -6,6 +6,7 @@ Your minimal yet extensive authentication starter project in Gatsby.js with Fire
 
 * Powered by [Gatsby](https://github.com/gatsbyjs/gatsby)
 * [Live](https://react-firebase-authentication.wieruch.com/)
+* [Tutorial](https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial/)
 
 ## Features
 
