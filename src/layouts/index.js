@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 
 import Navigation from '../components/Navigation';
@@ -24,10 +23,6 @@ const TemplateWrapper = ({ children }) => (
       {children()}
     </div>
   </div>
-)
-
-TemplateWrapper.propTypes = {
-  children: PropTypes.func,
-}
+);
 
 export default withAuthentication(TemplateWrapper)
