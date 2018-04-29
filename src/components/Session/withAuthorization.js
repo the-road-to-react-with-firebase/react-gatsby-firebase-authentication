@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import { navigateTo } from "gatsby-link"
 
 import { firebase } from '../../firebase';
 import * as routes from '../../constants/routes';
@@ -10,7 +11,8 @@ const withAuthorization = (condition) => (Component) => {
     componentDidMount() {
       firebase.auth.onAuthStateChanged(authUser => {
         if (!condition(authUser)) {
-          this.props.history.push(routes.SIGN_IN);
+          // this.props.history.push(routes.SIGN_IN);
+          navigateTo(routes.SIGN_IN)
         }
       });
     }
