@@ -4,11 +4,12 @@
   "version": "1.0.0",
   "author": "Robin Wieruch <wrobin@gmx.net>",
   "dependencies": {
-    "firebase": "^4.8.0",
-    "gatsby": "^1.9.127",
-    "gatsby-link": "^1.6.30",
-    "gatsby-plugin-react-helmet": "^1.0.8",
-    "prop-types": "^15.6.0"
+    "firebase": "^5.0.4",
+    "gatsby": "^1.9.266",
+    "gatsby-link": "^1.6.44",
+    "gatsby-plugin-react-helmet": "^2.0.11",
+    "gatsby-plugin-react-next": "^1.0.11",
+    "react-helmet": "^5.2.0"
   },
   "keywords": [
     "gatsby"
@@ -22,6 +23,6 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "devDependencies": {
-    "prettier": "^1.8.2"
+    "prettier": "^1.13.3"
   }
 }
