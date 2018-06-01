@@ -12,7 +12,7 @@ Your minimal yet extensive authentication starter project in Gatsby.js with Fire
 
 * uses:
   * only React (Gatsby.js)
-  * firebase 4.8.0
+  * firebase 5.0.0
 * features:
   * Sign In
   * Sign Up
