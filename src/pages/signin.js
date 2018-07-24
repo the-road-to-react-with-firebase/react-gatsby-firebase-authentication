@@ -3,13 +3,15 @@ import React from 'react';
 import SignInForm from '../components/SignIn';
 import { SignUpLink } from '../components/SignUp';
 import { PasswordForgetLink } from '../components/PasswordForget';
+import Layout from '../components/layout';
 
-const SignInPage = () =>
-  <div>
+const SignInPage = () => (
+  <Layout>
     <h1>SignIn</h1>
     <SignInForm />
     <PasswordForgetLink />
     <SignUpLink />
-  </div>
+  </Layout>
+);
 
 export default SignInPage;

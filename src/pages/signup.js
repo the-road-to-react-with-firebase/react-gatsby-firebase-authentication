@@ -1,11 +1,13 @@
 import React from 'react';
 
 import SignUpForm from '../components/SignUp';
+import Layout from '../components/layout';
 
-const SignUpPage = () =>
-  <div>
+const SignUpPage = () => (
+  <Layout>
     <h1>SignUp</h1>
     <SignUpForm />
-  </div>
+  </Layout>
+);
 
 export default SignUpPage;

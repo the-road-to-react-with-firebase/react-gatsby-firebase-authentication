@@ -20,18 +20,18 @@ const devConfig = {
   messagingSenderId: YOUR_MESSAGING_SENDER_ID,
 };
 
-const config = process.env.NODE_ENV === 'production'
-  ? prodConfig
-  : devConfig;
+const config = process.env.NODE_ENV === 'production' ? prodConfig : devConfig;
 
 if (!firebase.apps.length) {
   firebase.initializeApp(config);
 }
 
-const db = firebase.database();
-const auth = firebase.auth();
+let db, auth;
 
-export {
-  db,
-  auth,
-};
+if (typeof window !== 'undefined') {
+  // Gatsby build will fail otherwise
+  db = firebase.database();
+  auth = firebase.auth();
+}
+
+export { db, auth };
