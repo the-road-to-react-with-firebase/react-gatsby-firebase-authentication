@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 
 import withAuthorization from '../components/Session/withAuthorization';
 import { db } from '../firebase';
+import Layout from '../components/layout';
 
-const fromObjectToList = (object) =>
+const fromObjectToList = object =>
   object
     ? Object.keys(object).map(key => ({ ...object[key], index: key }))
     : [];
@@ -13,7 +14,7 @@ class HomePage extends Component {
     super(props);
 
     this.state = {
-      users: []
+      users: [],
     };
   }
 
@@ -27,24 +28,29 @@ class HomePage extends Component {
     const { users } = this.state;
 
     return (
-      <div>
-        <h1>Home</h1>
-        <p>The Home Page is accessible by every signed in user.</p>
-
-        { !!users.length && <UserList users={users} /> }
-      </div>
+      <Layout>
+        <HomePageContent users={users} />
+      </Layout>
     );
   }
 }
 
-const UserList = ({ users }) =>
+const UserList = ({ users }) => (
   <div>
     <h2>List of App User IDs (Saved on Sign Up in Firebase Database)</h2>
-    {users.map(user =>
-      <div key={user.index}>{user.index}</div>
-    )}
+    {users.map(user => <div key={user.index}>{user.index}</div>)}
   </div>
+);
 
-const authCondition = (authUser) => !!authUser;
+const authCondition = authUser => !!authUser;
 
-export default withAuthorization(authCondition)(HomePage);
+const HomePageContent = withAuthorization(authCondition)(users => (
+  <div>
+    <h1>Home</h1>
+    <p>The Home Page is accessible by every signed in user.</p>
+
+    {!!users.length && <UserList users={users} />}
+  </div>
+));
+
+export default HomePage;

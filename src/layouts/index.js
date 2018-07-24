@@ -18,11 +18,11 @@ const TemplateWrapper = ({ children }) => (
     <div className="app">
       <Navigation />
 
-      <hr/>
+      <hr />
 
       {children()}
     </div>
   </div>
 );
 
-export default withAuthentication(TemplateWrapper)
+export default withAuthentication(TemplateWrapper);

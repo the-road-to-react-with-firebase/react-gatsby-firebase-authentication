@@ -4,11 +4,12 @@
   "version": "1.0.0",
   "author": "Robin Wieruch <wrobin@gmx.net>",
   "dependencies": {
+    "bluebird": "^3.5.1",
     "firebase": "^5.0.4",
-    "gatsby": "^1.9.266",
-    "gatsby-link": "^1.6.44",
-    "gatsby-plugin-react-helmet": "^2.0.11",
-    "gatsby-plugin-react-next": "^1.0.11",
+    "gatsby": "next",
+    "gatsby-plugin-react-helmet": "next",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
     "react-helmet": "^5.2.0"
   },
   "keywords": [
@@ -19,7 +20,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\"",
+    "format": "prettier --trailing-comma es5 --single-quote --write \"src/**/*.js\"",
     "test": "echo \"No test specified\" && exit 0"
   },
   "devDependencies": {

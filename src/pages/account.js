@@ -4,18 +4,26 @@ import AuthUserContext from '../components/Session/AuthUserContext';
 import { PasswordForgetForm } from '../components/PasswordForget';
 import PasswordChangeForm from '../components/PasswordChange';
 import withAuthorization from '../components/Session/withAuthorization';
+import Layout from '../components/layout';
 
-const AccountPage = () =>
+const AccountPage = () => (
+  <Layout>
+    <AccountPageContent />
+  </Layout>
+);
+
+const authCondition = authUser => !!authUser;
+
+const AccountPageContent = withAuthorization(authCondition)(() => (
   <AuthUserContext.Consumer>
-    {authUser =>
+    {authUser => (
       <div>
         <h1>Account: {authUser.email}</h1>
         <PasswordForgetForm />
         <PasswordChangeForm />
       </div>
-    }
+    )}
   </AuthUserContext.Consumer>
+));
 
-const authCondition = (authUser) => !!authUser;
-
-export default withAuthorization(authCondition)(AccountPage);
+export default AccountPage;

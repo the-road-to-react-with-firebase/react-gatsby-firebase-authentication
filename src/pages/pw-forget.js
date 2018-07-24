@@ -1,11 +1,13 @@
 import React from 'react';
 
 import { PasswordForgetForm } from '../components/PasswordForget';
+import Layout from '../components/layout';
 
-const PasswordForgetPage = () =>
-  <div>
+const PasswordForgetPage = () => (
+  <Layout>
     <h1>PasswordForget</h1>
     <PasswordForgetForm />
-  </div>
+  </Layout>
+);
 
 export default PasswordForgetPage;
