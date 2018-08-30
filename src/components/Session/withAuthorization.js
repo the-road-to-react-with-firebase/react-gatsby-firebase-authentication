@@ -5,7 +5,7 @@ import AuthUserContext from '../Session/AuthUserContext';
 import { firebase } from '../../firebase';
 import * as routes from '../../constants/routes';
 
-const withAuthorization = ({condition, history}) => Component => {
+const withAuthorization = condition => Component => {
   class WithAuthorization extends React.Component {
     componentDidMount() {
       if (typeof window !== 'undefined') {
