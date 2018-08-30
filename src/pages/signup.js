@@ -3,10 +3,10 @@ import React from 'react';
 import SignUpForm from '../components/SignUp';
 import Layout from '../components/layout';
 
-const SignUpPage = (history) => (
+const SignUpPage = () => (
   <Layout>
     <h1>SignUp</h1>
-    <SignUpForm history={history} />
+    <SignUpForm />
   </Layout>
 );
 
