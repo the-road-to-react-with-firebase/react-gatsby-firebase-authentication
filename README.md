@@ -26,7 +26,7 @@ Your minimal yet extensive authentication starter project in Gatsby.js with Fire
 
 * `git clone git@github.com:rwieruch/gatsby-firebase-authentication.git`
 * `cd gatsby-firebase-authentication`
-* `npm install`
+* `yarn install`
 * `gatsby develop`
 * visit http://localhost:8000/
 * Use your own Firebase Credentials
@@ -41,7 +41,7 @@ Your minimal yet extensive authentication starter project in Gatsby.js with Fire
 
 * `gatsby new gatsby-firebase-authentication git@github.com:rwieruch/gatsby-firebase-authentication.git`
 * `cd gatsby-firebase-authentication`
-* `npm install`
+* `yarn install`
 * `gatsby develop`
 * visit http://localhost:8000/
 * Use your own Firebase Credentials
