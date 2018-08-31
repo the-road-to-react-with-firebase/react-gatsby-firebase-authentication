@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { navigate } from "gatsby";
 import { Link } from 'gatsby';
 
 import { auth, db } from '../../firebase';
@@ -27,8 +27,6 @@ class SignUpForm extends Component {
   onSubmit = event => {
     const { username, email, passwordOne } = this.state;
 
-    const { history } = this.props;
-
     auth
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
@@ -36,7 +34,7 @@ class SignUpForm extends Component {
         db.doCreateUser(authUser.user.uid, username, email)
           .then(() => {
             this.setState(() => ({ ...INITIAL_STATE }));
-            history.push(routes.HOME);
+            navigate(routes.HOME);
           })
           .catch(error => {
             this.setState(updateByPropertyName('error', error));
@@ -112,6 +110,6 @@ const SignUpLink = () => (
   </p>
 );
 
-export default withRouter(SignUpForm);
+export default SignUpForm;
 
 export { SignUpLink };

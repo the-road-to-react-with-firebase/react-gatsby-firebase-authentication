@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { navigate } from "gatsby";
 
 import AuthUserContext from '../Session/AuthUserContext';
 import { firebase } from '../../firebase';
@@ -11,7 +11,7 @@ const withAuthorization = condition => Component => {
       if (typeof window !== 'undefined') {
         firebase.auth.onAuthStateChanged(authUser => {
           if (!condition(authUser)) {
-            this.props.history.push(routes.SIGN_IN);
+            navigate(routes.SIGN_IN);
           }
         });
       }
@@ -26,7 +26,7 @@ const withAuthorization = condition => Component => {
     }
   }
 
-  return withRouter(WithAuthorization);
+  return WithAuthorization;
 };
 
 export default withAuthorization;
