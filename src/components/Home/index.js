@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 
-import withAuthorization from '../components/Session/withAuthorization';
-import { db } from '../firebase';
-import Layout from '../components/layout';
+import withAuthorization from '../Session/withAuthorization';
+import { db } from '../../firebase';
 
 const fromObjectToList = object =>
   object
@@ -28,9 +27,7 @@ class HomePage extends Component {
     const { users } = this.state;
 
     return (
-      <Layout>
-        <HomePageContent users={users} />
-      </Layout>
+      <HomePageContent users={users} />
     );
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link } from '@reach/router';
 
 import AuthUserContext from '../Session/AuthUserContext';
 import SignOutButton from '../SignOut';
@@ -34,7 +34,7 @@ const NavigationNonAuth = () => (
       <Link to={routes.LANDING}>Landing</Link>
     </li>
     <li>
-      <Link to={routes.SIGN_IN}>Sign In</Link>
+      <Link to={routes.HOME}>Home</Link>
     </li>
   </ul>
 );
