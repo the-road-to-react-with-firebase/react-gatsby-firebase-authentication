@@ -1,5 +1,5 @@
 import React from 'react';
-import { navigate } from "gatsby";
+import { navigate } from "@reach/router";
 
 import AuthUserContext from '../Session/AuthUserContext';
 import { firebase } from '../../firebase';

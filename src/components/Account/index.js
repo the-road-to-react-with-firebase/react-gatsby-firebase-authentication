@@ -1,15 +1,12 @@
 import React from 'react';
 
-import AuthUserContext from '../components/Session/AuthUserContext';
-import { PasswordForgetForm } from '../components/PasswordForget';
-import PasswordChangeForm from '../components/PasswordChange';
-import withAuthorization from '../components/Session/withAuthorization';
-import Layout from '../components/layout';
+import AuthUserContext from '../Session/AuthUserContext';
+import { PasswordForgetForm } from '../PasswordForget';
+import PasswordChangeForm from '../PasswordChange';
+import withAuthorization from '../Session/withAuthorization';
 
 const AccountPage = () => (
-  <Layout>
-    <AccountPageContent />
-  </Layout>
+  <AccountPageContent />
 );
 
 const authCondition = authUser => !!authUser;

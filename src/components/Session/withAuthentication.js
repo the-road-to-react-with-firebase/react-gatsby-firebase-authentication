@@ -15,11 +15,17 @@ const withAuthentication = Component =>
 
     componentDidMount() {
       if (typeof window !== 'undefined') {
-        firebase.auth.onAuthStateChanged(authUser => {
+        this.unsuscribe = firebase.auth.onAuthStateChanged(authUser => {
           authUser
             ? this.setState(() => ({ authUser }))
             : this.setState(() => ({ authUser: null }));
         });
+      }
+    }
+
+    componentWillUnmount() {
+      if (typeof this.unsuscribe === 'function') {
+        this.unsuscribe();
       }
     }
 

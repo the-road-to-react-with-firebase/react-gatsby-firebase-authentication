@@ -3,6 +3,8 @@ import { navigate } from "gatsby";
 
 import { auth } from "../../firebase";
 import * as routes from "../../constants/routes";
+import { PasswordForgetLink } from "../PasswordForget";
+import { SignUpLink } from "../SignUp";
 
 const updateByPropertyName = (propertyName, value) => () => ({
   [propertyName]: value
@@ -70,4 +72,15 @@ class SignInForm extends Component {
   }
 }
 
-export default SignInForm;
+export { SignInForm };
+
+const SignInPage = () => (
+  <>
+    <h1>SignIn</h1>
+    <SignInForm />
+    <PasswordForgetLink />
+    <SignUpLink />
+  </>
+);
+
+export default SignInPage;

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { navigate } from "gatsby";
-import { Link } from 'gatsby';
+import { navigate, Link } from '@reach/router';
 
 import { auth, db } from '../../firebase';
 import * as routes from '../../constants/routes';
@@ -110,6 +109,13 @@ const SignUpLink = () => (
   </p>
 );
 
-export default SignUpForm;
+export { SignUpForm, SignUpLink };
 
-export { SignUpLink };
+const SignUpPage = () => (
+  <>
+    <h1>SignUp</h1>
+    <SignUpForm />
+  </>
+);
+
+export default SignUpPage;

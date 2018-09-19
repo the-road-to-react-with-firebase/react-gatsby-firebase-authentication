@@ -10,4 +10,6 @@ export const doCreateUser = (id, username, email) =>
 
 export const onceGetUsers = () => db.ref('users').once('value');
 
+export const detachHomepageListener = () => db.ref('users').off();
+
 // Other db APIs ...

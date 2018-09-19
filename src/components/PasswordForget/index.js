@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'gatsby';
+import { Link } from '@reach/router';
 
 import { auth } from '../../firebase';
 import * as routes from '../../constants/routes';
@@ -67,3 +67,12 @@ const PasswordForgetLink = () => (
 );
 
 export { PasswordForgetForm, PasswordForgetLink };
+
+const PasswordForgetPage = () => (
+  <>
+    <h1>PasswordForget</h1>
+    <PasswordForgetForm />
+  </>
+);
+
+export default PasswordForgetPage;
