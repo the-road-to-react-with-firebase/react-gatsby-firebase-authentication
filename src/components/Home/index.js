@@ -23,6 +23,10 @@ class HomePage extends Component {
     );
   }
 
+  componentWillUnmount() {
+    db.detachHomepageListener();
+  }
+
   render() {
     const { users } = this.state;
 
