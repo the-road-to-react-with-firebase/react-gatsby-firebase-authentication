@@ -5,10 +5,6 @@ import { Link } from 'gatsby';
 import * as routes from '../../constants/routes';
 import { withFirebase } from '../Firebase/FirebaseContext';
 
-const updateByPropertyName = (propertyName, value) => () => ({
-  [propertyName]: value,
-});
-
 const INITIAL_STATE = {
   username: '',
   email: '',
@@ -31,18 +27,18 @@ class SignUpForm extends Component {
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
         // Create a user in your own accessible Firebase Database too
-        this.props.db
+        this.props.firebase
           .doCreateUser(authUser.user.uid, username, email)
           .then(() => {
             this.setState(() => ({ ...INITIAL_STATE }));
             navigate(routes.HOME);
           })
           .catch(error => {
-            this.setState(updateByPropertyName('error', error));
+            this.setState({ error });
           });
       })
       .catch(error => {
-        this.setState(updateByPropertyName('error', error));
+        this.setState({ error });
       });
 
     event.preventDefault();
@@ -66,41 +62,37 @@ class SignUpForm extends Component {
     return (
       <form onSubmit={this.onSubmit}>
         <input
+          name="username"
           value={username}
           onChange={event =>
-            this.setState(
-              updateByPropertyName('username', event.target.value),
-            )
+            this.setState({ [event.target.name]: event.target.value })
           }
           type="text"
           placeholder="Full Name"
         />
         <input
+          name="email"
           value={email}
           onChange={event =>
-            this.setState(
-              updateByPropertyName('email', event.target.value),
-            )
+            this.setState({ [event.target.name]: event.target.value })
           }
           type="text"
           placeholder="Email Address"
         />
         <input
+          name="passwordOne"
           value={passwordOne}
           onChange={event =>
-            this.setState(
-              updateByPropertyName('passwordOne', event.target.value),
-            )
+            this.setState({ [event.target.name]: event.target.value })
           }
           type="password"
           placeholder="Password"
         />
         <input
+          name="passwordTwo"
           value={passwordTwo}
           onChange={event =>
-            this.setState(
-              updateByPropertyName('passwordTwo', event.target.value),
-            )
+            this.setState({ [event.target.name]: event.target.value })
           }
           type="password"
           placeholder="Confirm Password"

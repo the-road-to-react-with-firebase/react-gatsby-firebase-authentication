@@ -4,10 +4,6 @@ import { navigate } from 'gatsby';
 import * as routes from '../../constants/routes';
 import { withFirebase } from '../Firebase/FirebaseContext';
 
-const updateByPropertyName = (propertyName, value) => () => ({
-  [propertyName]: value,
-});
-
 const INITIAL_STATE = {
   email: '',
   password: '',
@@ -31,7 +27,7 @@ class SignInForm extends Component {
         navigate(routes.HOME);
       })
       .catch(error => {
-        this.setState(updateByPropertyName('error', error));
+        this.setState({ error });
       });
 
     event.preventDefault();
@@ -45,21 +41,19 @@ class SignInForm extends Component {
     return (
       <form onSubmit={this.onSubmit}>
         <input
+          name="email"
           value={email}
           onChange={event =>
-            this.setState(
-              updateByPropertyName('email', event.target.value),
-            )
+            this.setState({ [event.target.name]: event.target.value })
           }
           type="text"
           placeholder="Email Address"
         />
         <input
+          name="password"
           value={password}
           onChange={event =>
-            this.setState(
-              updateByPropertyName('password', event.target.value),
-            )
+            this.setState({ [event.target.name]: event.target.value })
           }
           type="password"
           placeholder="Password"

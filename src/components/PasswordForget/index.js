@@ -4,10 +4,6 @@ import { Link } from 'gatsby';
 import * as routes from '../../constants/routes';
 import { withFirebase } from '../Firebase/FirebaseContext';
 
-const updateByPropertyName = (propertyName, value) => () => ({
-  [propertyName]: value,
-});
-
 const INITIAL_STATE = {
   email: '',
   error: null,
@@ -29,7 +25,7 @@ class PasswordForgetForm extends Component {
         this.setState(() => ({ ...INITIAL_STATE }));
       })
       .catch(error => {
-        this.setState(updateByPropertyName('error', error));
+        this.setState({ error });
       });
 
     event.preventDefault();
@@ -43,11 +39,10 @@ class PasswordForgetForm extends Component {
     return (
       <form onSubmit={this.onSubmit}>
         <input
+          name="email"
           value={this.state.email}
           onChange={event =>
-            this.setState(
-              updateByPropertyName('email', event.target.value),
-            )
+            this.setState({ [event.target.name]: event.target.value })
           }
           type="text"
           placeholder="Email Address"

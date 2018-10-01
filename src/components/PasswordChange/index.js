@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 
 import { withFirebase } from '../Firebase/FirebaseContext';
 
-const updateByPropertyName = (propertyName, value) => () => ({
-  [propertyName]: value,
-});
-
 const INITIAL_STATE = {
   passwordOne: '',
   passwordTwo: '',
@@ -28,7 +24,7 @@ class PasswordChangeForm extends Component {
         this.setState(() => ({ ...INITIAL_STATE }));
       })
       .catch(error => {
-        this.setState(updateByPropertyName('error', error));
+        this.setState({ error });
       });
 
     event.preventDefault();
@@ -43,21 +39,19 @@ class PasswordChangeForm extends Component {
     return (
       <form onSubmit={this.onSubmit}>
         <input
+          name="passwordOne"
           value={passwordOne}
           onChange={event =>
-            this.setState(
-              updateByPropertyName('passwordOne', event.target.value),
-            )
+            this.setState({ [event.target.name]: event.target.value })
           }
           type="password"
           placeholder="New Password"
         />
         <input
+          name="passwordTwo"
           value={passwordTwo}
           onChange={event =>
-            this.setState(
-              updateByPropertyName('passwordTwo', event.target.value),
-            )
+            this.setState({ [event.target.name]: event.target.value })
           }
           type="password"
           placeholder="Confirm New Password"
