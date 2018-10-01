@@ -1,6 +1,6 @@
 # 🐣 Gatsby Firebase Authentication
 
-[![Build Status](https://travis-ci.org/rwieruch/gatsby-firebase-authentication.svg?branch=master)](https://travis-ci.org/rwieruch/gatsby-firebase-authentication) [![Slack](https://slack-the-road-to-learn-react.wieruch.com/badge.svg)](https://slack-the-road-to-learn-react.wieruch.com/)
+[![Build Status](https://travis-ci.org/taming-the-state-in-react/gatsby-firebase-authentication.svg?branch=master)](https://travis-ci.org/taming-the-state-in-react/gatsby-firebase-authentication) [![Slack](https://slack-the-road-to-learn-react.wieruch.com/badge.svg)](https://slack-the-road-to-learn-react.wieruch.com/)
 
 Your minimal yet extensive authentication starter project in Gatsby.js with Firebase and plain React.
 
@@ -24,7 +24,7 @@ Your minimal yet extensive authentication starter project in Gatsby.js with Fire
 
 ## Setup
 
-* `git clone git@github.com:rwieruch/gatsby-firebase-authentication.git`
+* `git clone git@github.com:taming-the-state-in-react/gatsby-firebase-authentication.git`
 * `cd gatsby-firebase-authentication`
 * `yarn install`
 * `gatsby develop`
@@ -39,7 +39,7 @@ Your minimal yet extensive authentication starter project in Gatsby.js with Fire
 
 ## Setup via Gatsby CLI
 
-* `gatsby new gatsby-firebase-authentication git@github.com:rwieruch/gatsby-firebase-authentication.git`
+* `gatsby new gatsby-firebase-authentication git@github.com:taming-the-state-in-react/gatsby-firebase-authentication.git`
 * `cd gatsby-firebase-authentication`
 * `yarn install`
 * `gatsby develop`
