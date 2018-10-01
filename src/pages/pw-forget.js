@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
-import { PasswordForgetForm } from '../components/PasswordForget';
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
+import PasswordForgetForm from '../components/PasswordForget';
 
 const PasswordForgetPage = () => (
-  <Layout>
+  <Fragment>
     <h1>PasswordForget</h1>
     <PasswordForgetForm />
-  </Layout>
+  </Fragment>
 );
 
-export default PasswordForgetPage;
+export default () => (
+  <Layout>
+    <PasswordForgetPage />
+  </Layout>
+);

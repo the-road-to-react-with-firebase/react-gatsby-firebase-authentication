@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'gatsby';
 
-import { auth } from '../../firebase';
 import * as routes from '../../constants/routes';
+import { withFirebase } from '../Firebase/FirebaseContext';
 
 const updateByPropertyName = (propertyName, value) => () => ({
   [propertyName]: value,
@@ -23,7 +23,7 @@ class PasswordForgetForm extends Component {
   onSubmit = event => {
     const { email } = this.state;
 
-    auth
+    this.props.firebase
       .doPasswordReset(email)
       .then(() => {
         this.setState(() => ({ ...INITIAL_STATE }));
@@ -45,7 +45,9 @@ class PasswordForgetForm extends Component {
         <input
           value={this.state.email}
           onChange={event =>
-            this.setState(updateByPropertyName('email', event.target.value))
+            this.setState(
+              updateByPropertyName('email', event.target.value),
+            )
           }
           type="text"
           placeholder="Email Address"
@@ -66,4 +68,6 @@ const PasswordForgetLink = () => (
   </p>
 );
 
-export { PasswordForgetForm, PasswordForgetLink };
+export { PasswordForgetLink };
+
+export default withFirebase(PasswordForgetForm);

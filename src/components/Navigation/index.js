@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
+import * as routes from '../../constants/routes';
 import AuthUserContext from '../Session/AuthUserContext';
 import SignOutButton from '../SignOut';
-import * as routes from '../../constants/routes';
 
 const Navigation = () => (
   <AuthUserContext.Consumer>
-    {authUser => (authUser ? <NavigationAuth /> : <NavigationNonAuth />)}
+    {authUser =>
+      authUser ? <NavigationAuth /> : <NavigationNonAuth />
+    }
   </AuthUserContext.Consumer>
 );
 

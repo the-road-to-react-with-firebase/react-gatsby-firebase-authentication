@@ -1,56 +1,73 @@
 import React, { Component } from 'react';
 
+import Layout from '../components/Layout';
 import withAuthorization from '../components/Session/withAuthorization';
-import { db } from '../firebase';
-import Layout from '../components/layout';
 
 const fromObjectToList = object =>
   object
     ? Object.keys(object).map(key => ({ ...object[key], index: key }))
     : [];
 
-class HomePage extends Component {
+class HomePageBase extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      initFirebase: false,
       users: [],
     };
   }
 
+  firebaseInit = () => {
+    if (this.props.firebase && !this.state.initFirebase) {
+      this.props.firebase.onceGetUsers().then(snapshot =>
+        this.setState(() => ({
+          users: fromObjectToList(snapshot.val()),
+        })),
+      );
+
+      this.setState({ initFirebase: true });
+    }
+  };
+
   componentDidMount() {
-    db.onceGetUsers().then(snapshot =>
-      this.setState(() => ({ users: fromObjectToList(snapshot.val()) }))
-    );
+    this.firebaseInit();
+  }
+
+  componentDidUpdate() {
+    this.firebaseInit();
   }
 
   render() {
     const { users } = this.state;
 
     return (
-      <Layout>
-        <HomePageContent users={users} />
-      </Layout>
+      <React.Fragment>
+        <p>The Home Page is accessible by every signed in user.</p>
+
+        {!!users.length && <UserList users={users} />}
+      </React.Fragment>
     );
   }
 }
 
 const UserList = ({ users }) => (
   <div>
-    <h2>List of App User IDs (Saved on Sign Up in Firebase Database)</h2>
-    {users.map(user => <div key={user.index}>{user.index}</div>)}
+    <h2>
+      List of App User IDs (Saved on Sign Up in Firebase Database)
+    </h2>
+    {users.map(user => (
+      <div key={user.index}>{user.index}</div>
+    ))}
   </div>
 );
 
 const authCondition = authUser => !!authUser;
 
-const HomePageContent = withAuthorization(authCondition)(users => (
-  <div>
-    <h1>Home</h1>
-    <p>The Home Page is accessible by every signed in user.</p>
+const HomePage = withAuthorization(authCondition)(HomePageBase);
 
-    {!!users.length && <UserList users={users} />}
-  </div>
-));
-
-export default HomePage;
+export default () => (
+  <Layout>
+    <HomePage />
+  </Layout>
+);

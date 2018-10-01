@@ -1,32 +1,53 @@
 import React from 'react';
-import { navigate } from "gatsby";
+import { navigate } from 'gatsby';
 
-import AuthUserContext from '../Session/AuthUserContext';
-import { firebase } from '../../firebase';
 import * as routes from '../../constants/routes';
+import AuthUserContext from '../Session/AuthUserContext';
+import { withFirebase } from '../Firebase/FirebaseContext';
 
 const withAuthorization = condition => Component => {
   class WithAuthorization extends React.Component {
-    componentDidMount() {
-      if (typeof window !== 'undefined') {
-        firebase.auth.onAuthStateChanged(authUser => {
+    constructor(props) {
+      super(props);
+
+      this.state = {
+        initFirebase: false,
+        authUser: null,
+      };
+    }
+
+    firebaseInit = () => {
+      if (this.props.firebase && !this.state.initFirebase) {
+        this.props.firebase.auth.onAuthStateChanged(authUser => {
           if (!condition(authUser)) {
             navigate(routes.SIGN_IN);
           }
         });
+
+        this.setState({ initFirebase: true });
       }
+    };
+
+    componentDidMount() {
+      this.firebaseInit();
+    }
+
+    componentDidUpdate() {
+      this.firebaseInit();
     }
 
     render() {
       return (
         <AuthUserContext.Consumer>
-          {authUser => (authUser ? <Component {...this.props} /> : null)}
+          {authUser =>
+            authUser ? <Component {...this.props} /> : null
+          }
         </AuthUserContext.Consumer>
       );
     }
   }
 
-  return WithAuthorization;
+  return withFirebase(WithAuthorization);
 };
 
 export default withAuthorization;
