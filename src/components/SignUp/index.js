@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-import { navigate } from "gatsby";
+import { navigate } from 'gatsby';
 import { Link } from 'gatsby';
 
-import { auth, db } from '../../firebase';
 import * as routes from '../../constants/routes';
-
-const updateByPropertyName = (propertyName, value) => () => ({
-  [propertyName]: value,
-});
+import { withFirebase } from '../Firebase/FirebaseContext';
 
 const INITIAL_STATE = {
   username: '',
@@ -27,28 +23,35 @@ class SignUpForm extends Component {
   onSubmit = event => {
     const { username, email, passwordOne } = this.state;
 
-    auth
+    this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
         // Create a user in your own accessible Firebase Database too
-        db.doCreateUser(authUser.user.uid, username, email)
+        this.props.firebase
+          .doCreateUser(authUser.user.uid, username, email)
           .then(() => {
             this.setState(() => ({ ...INITIAL_STATE }));
             navigate(routes.HOME);
           })
           .catch(error => {
-            this.setState(updateByPropertyName('error', error));
+            this.setState({ error });
           });
       })
       .catch(error => {
-        this.setState(updateByPropertyName('error', error));
+        this.setState({ error });
       });
 
     event.preventDefault();
   };
 
   render() {
-    const { username, email, passwordOne, passwordTwo, error } = this.state;
+    const {
+      username,
+      email,
+      passwordOne,
+      passwordTwo,
+      error,
+    } = this.state;
 
     const isInvalid =
       passwordOne !== passwordTwo ||
@@ -59,37 +62,37 @@ class SignUpForm extends Component {
     return (
       <form onSubmit={this.onSubmit}>
         <input
+          name="username"
           value={username}
           onChange={event =>
-            this.setState(updateByPropertyName('username', event.target.value))
+            this.setState({ [event.target.name]: event.target.value })
           }
           type="text"
           placeholder="Full Name"
         />
         <input
+          name="email"
           value={email}
           onChange={event =>
-            this.setState(updateByPropertyName('email', event.target.value))
+            this.setState({ [event.target.name]: event.target.value })
           }
           type="text"
           placeholder="Email Address"
         />
         <input
+          name="passwordOne"
           value={passwordOne}
           onChange={event =>
-            this.setState(
-              updateByPropertyName('passwordOne', event.target.value)
-            )
+            this.setState({ [event.target.name]: event.target.value })
           }
           type="password"
           placeholder="Password"
         />
         <input
+          name="passwordTwo"
           value={passwordTwo}
           onChange={event =>
-            this.setState(
-              updateByPropertyName('passwordTwo', event.target.value)
-            )
+            this.setState({ [event.target.name]: event.target.value })
           }
           type="password"
           placeholder="Confirm Password"
@@ -110,6 +113,6 @@ const SignUpLink = () => (
   </p>
 );
 
-export default SignUpForm;
-
 export { SignUpLink };
+
+export default withFirebase(SignUpForm);

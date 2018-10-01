@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
+import Layout from '../components/Layout';
 import SignUpForm from '../components/SignUp';
-import Layout from '../components/layout';
 
 const SignUpPage = () => (
-  <Layout>
+  <Fragment>
     <h1>SignUp</h1>
     <SignUpForm />
-  </Layout>
+  </Fragment>
 );
 
-export default SignUpPage;
+export default () => (
+  <Layout>
+    <SignUpPage />
+  </Layout>
+);

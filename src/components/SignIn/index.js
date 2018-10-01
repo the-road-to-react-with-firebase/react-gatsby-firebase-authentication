@@ -1,17 +1,13 @@
-import React, { Component } from "react";
-import { navigate } from "gatsby";
+import React, { Component } from 'react';
+import { navigate } from 'gatsby';
 
-import { auth } from "../../firebase";
-import * as routes from "../../constants/routes";
-
-const updateByPropertyName = (propertyName, value) => () => ({
-  [propertyName]: value
-});
+import * as routes from '../../constants/routes';
+import { withFirebase } from '../Firebase/FirebaseContext';
 
 const INITIAL_STATE = {
-  email: "",
-  password: "",
-  error: null
+  email: '',
+  password: '',
+  error: null,
 };
 
 class SignInForm extends Component {
@@ -24,14 +20,14 @@ class SignInForm extends Component {
   onSubmit = event => {
     const { email, password } = this.state;
 
-    auth
+    this.props.firebase
       .doSignInWithEmailAndPassword(email, password)
       .then(() => {
         this.setState(() => ({ ...INITIAL_STATE }));
         navigate(routes.HOME);
       })
       .catch(error => {
-        this.setState(updateByPropertyName("error", error));
+        this.setState({ error });
       });
 
     event.preventDefault();
@@ -40,22 +36,24 @@ class SignInForm extends Component {
   render() {
     const { email, password, error } = this.state;
 
-    const isInvalid = password === "" || email === "";
+    const isInvalid = password === '' || email === '';
 
     return (
       <form onSubmit={this.onSubmit}>
         <input
+          name="email"
           value={email}
           onChange={event =>
-            this.setState(updateByPropertyName("email", event.target.value))
+            this.setState({ [event.target.name]: event.target.value })
           }
           type="text"
           placeholder="Email Address"
         />
         <input
+          name="password"
           value={password}
           onChange={event =>
-            this.setState(updateByPropertyName("password", event.target.value))
+            this.setState({ [event.target.name]: event.target.value })
           }
           type="password"
           placeholder="Password"
@@ -70,4 +68,4 @@ class SignInForm extends Component {
   }
 }
 
-export default SignInForm;
+export default withFirebase(SignInForm);

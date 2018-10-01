@@ -1,29 +1,31 @@
 import React from 'react';
 
+import Layout from '../components/Layout';
 import AuthUserContext from '../components/Session/AuthUserContext';
-import { PasswordForgetForm } from '../components/PasswordForget';
+import PasswordForgetForm from '../components/PasswordForget';
 import PasswordChangeForm from '../components/PasswordChange';
 import withAuthorization from '../components/Session/withAuthorization';
-import Layout from '../components/layout';
 
-const AccountPage = () => (
-  <Layout>
-    <AccountPageContent />
-  </Layout>
+const AccountPageBase = () => (
+  <React.Fragment>
+    <AuthUserContext.Consumer>
+      {authUser => (
+        <div>
+          <h1>Account: {authUser.email}</h1>
+          <PasswordForgetForm />
+          <PasswordChangeForm />
+        </div>
+      )}
+    </AuthUserContext.Consumer>
+  </React.Fragment>
 );
 
 const authCondition = authUser => !!authUser;
 
-const AccountPageContent = withAuthorization(authCondition)(() => (
-  <AuthUserContext.Consumer>
-    {authUser => (
-      <div>
-        <h1>Account: {authUser.email}</h1>
-        <PasswordForgetForm />
-        <PasswordChangeForm />
-      </div>
-    )}
-  </AuthUserContext.Consumer>
-));
+const AccountPage = withAuthorization(authCondition)(AccountPageBase);
 
-export default AccountPage;
+export default () => (
+  <Layout>
+    <AccountPage />
+  </Layout>
+);

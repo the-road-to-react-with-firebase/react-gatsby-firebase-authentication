@@ -1,17 +1,21 @@
-import React from "react";
+import React, { Fragment } from 'react';
 
-import SignInForm from "../components/SignIn";
-import { SignUpLink } from "../components/SignUp";
-import { PasswordForgetLink } from "../components/PasswordForget";
-import Layout from "../components/layout";
+import Layout from '../components/Layout';
+import SignInForm from '../components/SignIn';
+import { SignUpLink } from '../components/SignUp';
+import { PasswordForgetLink } from '../components/PasswordForget';
 
 const SignInPage = () => (
-  <Layout>
+  <Fragment>
     <h1>SignIn</h1>
     <SignInForm />
     <PasswordForgetLink />
     <SignUpLink />
-  </Layout>
+  </Fragment>
 );
 
-export default SignInPage;
+export default () => (
+  <Layout>
+    <SignInPage />
+  </Layout>
+);
