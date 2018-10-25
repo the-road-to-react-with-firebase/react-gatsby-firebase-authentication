@@ -1,6 +1,6 @@
 # 🐣 Gatsby Firebase Authentication
 
-[![Build Status](https://travis-ci.org/taming-the-state-in-react/gatsby-firebase-authentication.svg?branch=master)](https://travis-ci.org/taming-the-state-in-react/gatsby-firebase-authentication) [![Slack](https://slack-the-road-to-learn-react.wieruch.com/badge.svg)](https://slack-the-road-to-learn-react.wieruch.com/)
+[![Build Status](https://travis-ci.org/taming-the-state-in-react/gatsby-firebase-authentication.svg?branch=master)](https://travis-ci.org/taming-the-state-in-react/gatsby-firebase-authentication) [![Slack](https://slack-the-road-to-learn-react.wieruch.com/badge.svg)](https://slack-the-road-to-learn-react.wieruch.com/) [![Greenkeeper badge](https://badges.greenkeeper.io/taming-the-state-in-react/gatsby-firebase-authentication.svg)](https://greenkeeper.io/)
 
 Your minimal yet extensive authentication starter project in Gatsby.js with Firebase and plain React.
 
