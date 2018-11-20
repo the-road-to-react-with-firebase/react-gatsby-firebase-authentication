@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "author": "Robin Wieruch <hello@rwieruch.com>",
   "dependencies": {
-    "firebase": "^5.5.2",
+    "firebase": "^5.5.9",
     "gatsby": "^2.0.12",
     "gatsby-plugin-react-helmet": "^3.0.0",
     "react": "^16.5.2",
