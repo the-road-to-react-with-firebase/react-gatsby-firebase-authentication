@@ -34,7 +34,7 @@ Your minimal yet extensive authentication starter project in Gatsby.js with Fire
 
 * `git clone git@github.com:the-road-to-react-with-firebase/react-gatsby-firebase-authentication.git`
 * `cd react-gatsby-firebase-authentication`
-* `yarn install`
+* `npm install`
 * `gatsby develop`
 * visit http://localhost:8000/
 * Use your own Firebase Credentials
@@ -43,13 +43,17 @@ Your minimal yet extensive authentication starter project in Gatsby.js with Fire
 
 * visit https://firebase.google.com/ and create a Firebase App
 * copy and paste your Credentials from your Firebase App into src/firebase/firebase.js
-* activate Email/Password Sign-In Method in your Firebase App
+* [activate Sign-In Methods in your Firebase App](https://www.robinwieruch.de/react-firebase-social-login/)
+  * Email/Password
+  * Google
+  * Facebook
+  * Twitter
 
 ## Setup via Gatsby CLI
 
 * `gatsby new react-gatsby-firebase-authentication git@github.com:the-road-to-react-with-firebase/react-gatsby-firebase-authentication.git`
 * `cd react-gatsby-firebase-authentication`
-* `yarn install`
+* `npm install`
 * `gatsby develop`
 * visit http://localhost:8000/
 * Use your own Firebase Credentials
