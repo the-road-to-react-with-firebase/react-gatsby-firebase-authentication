@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 import { withFirebase } from '../Firebase';
-import * as ROUTES from '../../constants/routes';
 
 class UserList extends Component {
+  _initFirebase = false;
+
   constructor(props) {
     super(props);
 
@@ -14,22 +14,34 @@ class UserList extends Component {
     };
   }
 
-  componentDidMount() {
-    this.setState({ loading: true });
+  firebaseInit = () => {
+    if (this.props.firebase && !this._initFirebase) {
+      this._initFirebase = true;
 
-    this.props.firebase.users().on('value', snapshot => {
-      const usersObject = snapshot.val();
+      this.setState({ loading: true });
 
-      const usersList = Object.keys(usersObject).map(key => ({
-        ...usersObject[key],
-        uid: key,
-      }));
+      this.props.firebase.users().on('value', snapshot => {
+        const usersObject = snapshot.val();
 
-      this.setState({
-        users: usersList,
-        loading: false,
+        const usersList = Object.keys(usersObject).map(key => ({
+          ...usersObject[key],
+          uid: key,
+        }));
+
+        this.setState({
+          users: usersList,
+          loading: false,
+        });
       });
-    });
+    }
+  };
+
+  componentDidMount() {
+    this.firebaseInit();
+  }
+
+  componentDidUpdate() {
+    this.firebaseInit();
   }
 
   componentWillUnmount() {
@@ -43,6 +55,7 @@ class UserList extends Component {
       <div>
         <h2>Users</h2>
         {loading && <div>Loading ...</div>}
+
         <ul>
           {users.map(user => (
             <li key={user.uid}>
@@ -54,16 +67,6 @@ class UserList extends Component {
               </span>
               <span>
                 <strong>Username:</strong> {user.username}
-              </span>
-              <span>
-                <Link
-                  to={{
-                    pathname: `${ROUTES.ADMIN}/${user.uid}`,
-                    state: { user },
-                  }}
-                >
-                  Details
-                </Link>
               </span>
             </li>
           ))}

@@ -5,6 +5,8 @@ import { withFirebase } from '../Firebase';
 import MessageList from './MessageList';
 
 class Messages extends Component {
+  _initFirebase = false;
+
   constructor(props) {
     super(props);
 
@@ -16,8 +18,20 @@ class Messages extends Component {
     };
   }
 
+  firebaseInit = () => {
+    if (this.props.firebase && !this._initFirebase) {
+      this._initFirebase = true;
+
+      this.onListenForMessages();
+    }
+  };
+
   componentDidMount() {
-    this.onListenForMessages();
+    this.firebaseInit();
+  }
+
+  componentDidUpdate() {
+    this.firebaseInit();
   }
 
   onListenForMessages = () => {
@@ -93,11 +107,12 @@ class Messages extends Component {
       <AuthUserContext.Consumer>
         {authUser => (
           <div>
-            {!loading && messages && (
-              <button type="button" onClick={this.onNextPage}>
-                More
-              </button>
-            )}
+            {!loading &&
+              messages && (
+                <button type="button" onClick={this.onNextPage}>
+                  More
+                </button>
+              )}
 
             {loading && <div>Loading ...</div>}
 

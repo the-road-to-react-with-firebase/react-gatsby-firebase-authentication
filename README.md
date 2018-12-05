@@ -1,19 +1,21 @@
-# react-firebase-authentication
+# 🐣 Gatsby Firebase Starter
 
-[![Build Status](https://travis-ci.org/the-road-to-react-with-firebase/react-firebase-authentication.svg?branch=master)](https://travis-ci.org/the-road-to-react-with-firebase/react-firebase-authentication) [![Slack](https://slack-the-road-to-learn-react.wieruch.com/badge.svg)](https://slack-the-road-to-learn-react.wieruch.com/) [![Greenkeeper badge](https://badges.greenkeeper.io/the-road-to-react-with-firebase/react-firebase-authentication.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/the-road-to-react-with-firebase/react-gatsby-firebase-authentication.svg?branch=master)](https://travis-ci.org/the-road-to-react-with-firebase/react-gatsby-firebase-authentication) [![Slack](https://slack-the-road-to-learn-react.wieruch.com/badge.svg)](https://slack-the-road-to-learn-react.wieruch.com/) [![Greenkeeper badge](https://badges.greenkeeper.io/the-road-to-react-with-firebase/react-gatsby-firebase-authentication.svg)](https://greenkeeper.io/)
 
+Your minimal yet extensive authentication starter project in Gatsby.js with Firebase and plain React.
+
+* Powered by [Gatsby](https://github.com/gatsbyjs/gatsby)
 * [Tutorial](https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial/)
 * [Live Version of half of the Tutorial](https://react-firebase-authentication.wieruch.com/)
 
 ## Features
 
 * uses:
-  * only React (create-react-app)
+  * only React (Gatsby.js)
   * firebase 5
-  * react-router 4
   * no Redux/MobX
-    * [Redux Version](https://github.com/taming-the-state-in-react/react-redux-firebase-authentication)
-    * [MobX Version](https://github.com/taming-the-state-in-react/react-mobx-firebase-authentication)
+    * [Redux Version without Gatsby.js](https://github.com/the-road-to-react-with-firebase/react-redux-firebase-authentication)
+    * [MobX Version without Gatsby.js](https://github.com/the-road-to-react-with-firebase/react-mobx-firebase-authentication)
 * features:
   * Sign In
   * Sign Up
@@ -28,17 +30,26 @@
   * Auth Persistence with Local Storage
   * Database with Users and Messages
 
-## Installation
+## Setup
 
-* `git clone git@github.com:the-road-to-react-with-firebase/react-firebase-authentication.git`
-* `cd react-firebase-authentication`
-* `npm install`
-* `npm start`
-* visit http://localhost:3000/
+* `git clone git@github.com:the-road-to-react-with-firebase/react-gatsby-firebase-authentication.git`
+* `cd react-gatsby-firebase-authentication`
+* `yarn install`
+* `gatsby develop`
+* visit http://localhost:8000/
 * Use your own Firebase Credentials
 
 ### Use your own Firebase Credentials
 
-* visit https://firebase.google.com and create a Firebase App
-* copy and paste your Credentials from your Firebase App into *src/components/Firebase/firebase.js* file or in .env file
-* activate Email/Password, Google, Facebook and Twitter Sign-In Methods for your Firebase App
+* visit https://firebase.google.com/ and create a Firebase App
+* copy and paste your Credentials from your Firebase App into src/firebase/firebase.js
+* activate Email/Password Sign-In Method in your Firebase App
+
+## Setup via Gatsby CLI
+
+* `gatsby new react-gatsby-firebase-authentication git@github.com:the-road-to-react-with-firebase/react-gatsby-firebase-authentication.git`
+* `cd react-gatsby-firebase-authentication`
+* `yarn install`
+* `gatsby develop`
+* visit http://localhost:8000/
+* Use your own Firebase Credentials

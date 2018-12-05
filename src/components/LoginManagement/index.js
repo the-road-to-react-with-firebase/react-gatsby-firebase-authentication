@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
-import { compose } from 'recompose';
 
-import {
-  AuthUserContext,
-  withAuthorization,
-  withEmailVerification,
-} from '../Session';
 import { withFirebase } from '../Firebase';
-import { PasswordForgetForm } from '../PasswordForget';
-import PasswordChangeForm from '../PasswordChange';
 
 const SIGN_IN_METHODS = [
   {
@@ -29,20 +21,9 @@ const SIGN_IN_METHODS = [
   },
 ];
 
-const AccountPage = () => (
-  <AuthUserContext.Consumer>
-    {authUser => (
-      <div>
-        <h1>Account: {authUser.email}</h1>
-        <PasswordForgetForm />
-        <PasswordChangeForm />
-        <LoginManagement authUser={authUser} />
-      </div>
-    )}
-  </AuthUserContext.Consumer>
-);
+class LoginManagement extends Component {
+  _initFirebase = false;
 
-class LoginManagementBase extends Component {
   constructor(props) {
     super(props);
 
@@ -52,8 +33,20 @@ class LoginManagementBase extends Component {
     };
   }
 
+  firebaseInit = () => {
+    if (this.props.firebase && !this._initFirebase) {
+      this._initFirebase = true;
+
+      this.fetchSignInMethods();
+    }
+  };
+
   componentDidMount() {
-    this.fetchSignInMethods();
+    this.firebaseInit();
+  }
+
+  componentDidUpdate() {
+    this.firebaseInit();
   }
 
   fetchSignInMethods = () => {
@@ -221,11 +214,4 @@ class DefaultLoginToggle extends Component {
   }
 }
 
-const LoginManagement = withFirebase(LoginManagementBase);
-
-const condition = authUser => !!authUser;
-
-export default compose(
-  withEmailVerification,
-  withAuthorization(condition),
-)(AccountPage);
+export default withFirebase(LoginManagement);

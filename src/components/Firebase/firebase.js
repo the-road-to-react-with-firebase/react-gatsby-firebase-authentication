@@ -1,7 +1,3 @@
-import app from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/database';
-
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -12,7 +8,7 @@ const config = {
 };
 
 class Firebase {
-  constructor() {
+  constructor(app) {
     app.initializeApp(config);
 
     /* Helper */
@@ -105,4 +101,14 @@ class Firebase {
   messages = () => this.db.ref('messages');
 }
 
-export default Firebase;
+let firebase;
+
+function getFirebase(app, auth, database) {
+  if (!firebase) {
+    firebase = new Firebase(app, auth, database);
+  }
+
+  return firebase;
+}
+
+export default getFirebase;

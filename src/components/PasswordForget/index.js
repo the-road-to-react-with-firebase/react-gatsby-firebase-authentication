@@ -1,22 +1,15 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'gatsby';
 
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
-
-const PasswordForgetPage = () => (
-  <div>
-    <h1>PasswordForget</h1>
-    <PasswordForgetForm />
-  </div>
-);
 
 const INITIAL_STATE = {
   email: '',
   error: null,
 };
 
-class PasswordForgetFormBase extends Component {
+class PasswordForgetForm extends Component {
   constructor(props) {
     super(props);
 
@@ -72,8 +65,6 @@ const PasswordForgetLink = () => (
   </p>
 );
 
-export default PasswordForgetPage;
+export default withFirebase(PasswordForgetForm);
 
-const PasswordForgetForm = withFirebase(PasswordForgetFormBase);
-
-export { PasswordForgetForm, PasswordForgetLink };
+export { PasswordForgetLink };

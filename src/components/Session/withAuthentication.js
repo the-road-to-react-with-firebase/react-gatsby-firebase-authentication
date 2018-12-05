@@ -5,6 +5,8 @@ import { withFirebase } from '../Firebase';
 
 const withAuthentication = Component => {
   class WithAuthentication extends React.Component {
+    _initFirebase = false;
+
     constructor(props) {
       super(props);
 
@@ -13,17 +15,32 @@ const withAuthentication = Component => {
       };
     }
 
+    firebaseInit = () => {
+      if (this.props.firebase && !this._initFirebase) {
+        this._initFirebase = true;
+
+        this.listener = this.props.firebase.onAuthUserListener(
+          authUser => {
+            localStorage.setItem(
+              'authUser',
+              JSON.stringify(authUser),
+            );
+            this.setState({ authUser });
+          },
+          () => {
+            localStorage.removeItem('authUser');
+            this.setState({ authUser: null });
+          },
+        );
+      }
+    };
+
     componentDidMount() {
-      this.listener = this.props.firebase.onAuthUserListener(
-        authUser => {
-          localStorage.setItem('authUser', JSON.stringify(authUser));
-          this.setState({ authUser });
-        },
-        () => {
-          localStorage.removeItem('authUser');
-          this.setState({ authUser: null });
-        },
-      );
+      this.firebaseInit();
+    }
+
+    componentDidUpdate() {
+      this.firebaseInit();
     }
 
     componentWillUnmount() {

@@ -1,25 +1,17 @@
 {
-  "name": "react-firebase-authentication",
-  "version": "0.2.0",
-  "private": true,
+  "name": "react-gastby-firebase-authentication",
+  "description": "Gatsby hello world starter",
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "npm run develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve"
+  },
   "dependencies": {
     "firebase": "^5.6.0",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.1",
+    "gatsby": "^2.0.33",
+    "react": "^16.5.1",
+    "react-dom": "^16.5.1",
     "recompose": "^0.30.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom --passWithNoTests",
-    "eject": "react-scripts eject"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  }
 }
