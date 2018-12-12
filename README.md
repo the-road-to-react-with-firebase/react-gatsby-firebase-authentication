@@ -8,14 +8,19 @@ Your minimal yet extensive authentication starter project in Gatsby.js with Fire
 * [Tutorial](https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial/)
 * [Live Version of half of the Tutorial](https://react-firebase-authentication.wieruch.com/)
 
+## Variations
+
+* [Only React Version](https://github.com/the-road-to-react-with-firebase/react-firebase-authentication)
+* [Redux Version](https://github.com/the-road-to-react-with-firebase/react-redux-firebase-authentication)
+* [MobX Version](https://github.com/the-road-to-react-with-firebase/react-mobx-firebase-authentication)
+* [Firestore Version](https://github.com/the-road-to-react-with-firebase/react-firestore-authentication)
+* [Semantic UI Version](https://github.com/the-road-to-react-with-firebase/react-semantic-ui-firebase-authentication)
+
 ## Features
 
 * uses:
   * only React (Gatsby.js)
-  * firebase 5
-  * no Redux/MobX
-    * [Redux Version without Gatsby.js](https://github.com/the-road-to-react-with-firebase/react-redux-firebase-authentication)
-    * [MobX Version without Gatsby.js](https://github.com/the-road-to-react-with-firebase/react-mobx-firebase-authentication)
+  * firebase
 * features:
   * Sign In
   * Sign Up
