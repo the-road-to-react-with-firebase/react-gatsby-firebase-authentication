@@ -19,7 +19,7 @@ Your minimal yet extensive authentication starter project in Gatsby.js with Fire
 ## Features
 
 * uses:
-  * only React (Gatsby.js)
+  * only React (**Gatsby.js**)
   * firebase
 * features:
   * Sign In
