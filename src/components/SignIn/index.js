@@ -90,7 +90,7 @@ class SignInGoogleBase extends Component {
       .doSignInWithGoogle()
       .then(socialAuthUser => {
         // Create a user in your Firebase Realtime Database too
-        return this.props.firebase.user(socialAuthUser.user.uid).set({
+        return this.props.firebase.user(socialAuthUser.user.uid).update({
           username: socialAuthUser.user.displayName,
           email: socialAuthUser.user.email,
           roles: [],
@@ -136,7 +136,7 @@ class SignInFacebookBase extends Component {
       .doSignInWithFacebook()
       .then(socialAuthUser => {
         // Create a user in your Firebase Realtime Database too
-        return this.props.firebase.user(socialAuthUser.user.uid).set({
+        return this.props.firebase.user(socialAuthUser.user.uid).update({
           username: socialAuthUser.additionalUserInfo.profile.name,
           email: socialAuthUser.additionalUserInfo.profile.email,
           roles: [],
@@ -182,7 +182,7 @@ class SignInTwitterBase extends Component {
       .doSignInWithTwitter()
       .then(socialAuthUser => {
         // Create a user in your Firebase Realtime Database too
-        return this.props.firebase.user(socialAuthUser.user.uid).set({
+        return this.props.firebase.user(socialAuthUser.user.uid).update({
           username: socialAuthUser.additionalUserInfo.profile.name,
           email: socialAuthUser.additionalUserInfo.profile.email,
           roles: [],
