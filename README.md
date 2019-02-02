@@ -71,12 +71,12 @@ Get an overview of Firebase, how to create a project, what kind of features Fire
 The *.env* or *.env.development* and *.env.production* files could look like the following then:
 
 ```
-REACT_APP_API_KEY=AIzaSyBtxZ3phPeXcsZsRTySIXa7n33NtQ
-REACT_APP_AUTH_DOMAIN=react-firebase-s2233d64f8.firebaseapp.com
-REACT_APP_DATABASE_URL=https://react-firebase-s2233d64f8.firebaseio.com
-REACT_APP_PROJECT_ID=react-firebase-s2233d64f8
-REACT_APP_STORAGE_BUCKET=react-firebase-s2233d64f8.appspot.com
-REACT_APP_MESSAGING_SENDER_ID=701928454501
+GATSBY_API_KEY=AIzaSyBtxZ3phPeXcsZsRTySIXa7n33NtQ
+GATSBY_AUTH_DOMAIN=react-firebase-s2233d64f8.firebaseapp.com
+GATSBY_DATABASE_URL=https://react-firebase-s2233d64f8.firebaseio.com
+GATSBY_PROJECT_ID=react-firebase-s2233d64f8
+GATSBY_STORAGE_BUCKET=react-firebase-s2233d64f8.appspot.com
+GATSBY_MESSAGING_SENDER_ID=701928454501
 ```
 
 ### Activate Sign-In Methods
@@ -101,13 +101,13 @@ The *.env* or *.env.development* and *.env.production* files could look like the
 **Development:**
 
 ```
-REACT_APP_CONFIRMATION_EMAIL_REDIRECT=http://localhost:3000
+GATSBY_CONFIRMATION_EMAIL_REDIRECT=http://localhost:3000
 ```
 
 **Production:**
 
 ```
-REACT_APP_CONFIRMATION_EMAIL_REDIRECT=https://mydomain.com
+GATSBY_CONFIRMATION_EMAIL_REDIRECT=https://mydomain.com
 ```
 
 ## Setup via Gatsby CLI
