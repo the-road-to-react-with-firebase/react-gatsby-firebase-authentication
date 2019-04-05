@@ -19,7 +19,7 @@ const AdminPageBase = () => (
 );
 
 const condition = authUser =>
-  authUser && authUser.roles.includes(ROLES.ADMIN);
+  authUser && !!authUser.roles[ROLES.ADMIN];
 
 const AdminPage = compose(
   withEmailVerification,
