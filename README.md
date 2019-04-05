@@ -110,6 +110,33 @@ REACT_APP_CONFIRMATION_EMAIL_REDIRECT=http://localhost:3000
 REACT_APP_CONFIRMATION_EMAIL_REDIRECT=https://mydomain.com
 ```
 
+### Security Rules
+
+```
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "users": {
+      "$uid": {
+        ".read": "$uid === auth.uid || root.child('users/'+auth.uid).child('roles').hasChildren(['ADMIN'])",
+        ".write": "$uid === auth.uid || root.child('users/'+auth.uid).child('roles').hasChildren(['ADMIN'])"
+      },
+      ".read": "root.child('users/'+auth.uid).child('roles').hasChildren(['ADMIN'])",
+      ".write": "root.child('users/'+auth.uid).child('roles').hasChildren(['ADMIN'])"
+    },
+    "messages": {
+      ".indexOn": ["createdAt"],
+      "$uid": {
+        ".write": "data.exists() ? data.child('userId').val() === auth.uid : newData.child('userId').val() === auth.uid"
+      },
+      ".read": "auth != null",
+      ".write": "auth != null",
+    },
+  }
+}
+```
+
 ## Setup via Gatsby CLI
 
 * `gatsby new react-gatsby-firebase-authentication git@github.com:the-road-to-react-with-firebase/react-gatsby-firebase-authentication.git`
