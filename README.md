@@ -53,11 +53,11 @@ If you are creating an open source application under a license compatible with t
 
 ## Installation
 
-* `git clone git@github.com:the-road-to-react-with-firebase/react-gatsby-firebase-authentication.git`
+* `git clone https://github.com:the-road-to-react-with-firebase/react-gatsby-firebase-authentication.git`
 * `cd react-gatsby-firebase-authentication`
 * `npm install`
 * `npm start`
-* visit http://localhost:3000
+* visit http://localhost:8000
 
 Get an overview of Firebase, how to create a project, what kind of features Firebase offers, and how to navigate through the Firebase project dashboard in this [visual tutorial for Firebase](https://www.robinwieruch.de/firebase-tutorial/).
 
@@ -71,12 +71,12 @@ Get an overview of Firebase, how to create a project, what kind of features Fire
 The *.env* or *.env.development* and *.env.production* files could look like the following then:
 
 ```
-REACT_APP_API_KEY=AIzaSyBtxZ3phPeXcsZsRTySIXa7n33NtQ
-REACT_APP_AUTH_DOMAIN=react-firebase-s2233d64f8.firebaseapp.com
-REACT_APP_DATABASE_URL=https://react-firebase-s2233d64f8.firebaseio.com
-REACT_APP_PROJECT_ID=react-firebase-s2233d64f8
-REACT_APP_STORAGE_BUCKET=react-firebase-s2233d64f8.appspot.com
-REACT_APP_MESSAGING_SENDER_ID=701928454501
+GATSBY_API_KEY=AIzaSyBtxZ3phPeXcsZsRTySIXa7n33NtQ
+GATSBY_AUTH_DOMAIN=react-firebase-s2233d64f8.firebaseapp.com
+GATSBY_DATABASE_URL=https://react-firebase-s2233d64f8.firebaseio.com
+GATSBY_PROJECT_ID=react-firebase-s2233d64f8
+GATSBY_STORAGE_BUCKET=react-firebase-s2233d64f8.appspot.com
+GATSBY_MESSAGING_SENDER_ID=701928454501
 ```
 
 ### Activate Sign-In Methods
@@ -101,13 +101,13 @@ The *.env* or *.env.development* and *.env.production* files could look like the
 **Development:**
 
 ```
-REACT_APP_CONFIRMATION_EMAIL_REDIRECT=http://localhost:3000
+GATSBY_CONFIRMATION_EMAIL_REDIRECT=http://localhost:3000
 ```
 
 **Production:**
 
 ```
-REACT_APP_CONFIRMATION_EMAIL_REDIRECT=https://mydomain.com
+GATSBY_CONFIRMATION_EMAIL_REDIRECT=https://mydomain.com
 ```
 
 ### Security Rules
@@ -139,7 +139,7 @@ REACT_APP_CONFIRMATION_EMAIL_REDIRECT=https://mydomain.com
 
 ## Setup via Gatsby CLI
 
-* `gatsby new react-gatsby-firebase-authentication git@github.com:the-road-to-react-with-firebase/react-gatsby-firebase-authentication.git`
+* `gatsby new react-gatsby-firebase-authentication https://github.com:the-road-to-react-with-firebase/react-gatsby-firebase-authentication.git`
 * `cd react-gatsby-firebase-authentication`
 * `npm install`
 * `gatsby develop`
