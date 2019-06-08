@@ -53,9 +53,11 @@ If you are creating an open source application under a license compatible with t
 
 ## Installation
 
-* `git clone https://github.com:the-road-to-react-with-firebase/react-gatsby-firebase-authentication.git`
+* `git clone https://github.com/the-road-to-react-with-firebase/react-gatsby-firebase-authentication.git`
 * `cd react-gatsby-firebase-authentication`
 * `npm install`
+* save the [Firebase credentials](#firebase-configuration)
+* setup the [security rules](#security-rules)
 * `npm start`
 * visit http://localhost:8000
 
@@ -112,6 +114,8 @@ GATSBY_CONFIRMATION_EMAIL_REDIRECT=https://mydomain.com
 
 ### Security Rules
 
+In the Firebase console, go to Database, select "Realtime Database" -> Rules, and paste the rules below:
+
 ```
 {
   "rules": {
@@ -139,7 +143,7 @@ GATSBY_CONFIRMATION_EMAIL_REDIRECT=https://mydomain.com
 
 ## Setup via Gatsby CLI
 
-* `gatsby new react-gatsby-firebase-authentication https://github.com:the-road-to-react-with-firebase/react-gatsby-firebase-authentication.git`
+* `gatsby new react-gatsby-firebase-authentication https://github.com/the-road-to-react-with-firebase/react-gatsby-firebase-authentication.git`
 * `cd react-gatsby-firebase-authentication`
 * `npm install`
 * `gatsby develop`
